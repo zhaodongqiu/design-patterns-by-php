@@ -76,6 +76,9 @@ $operation->setB(10);
 echo $operation->getResult()."\n";
 ```
 
+一句话概括
+
+> 多个工厂各自生成多种产品
 
 总结：
 
