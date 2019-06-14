@@ -112,6 +112,10 @@ $fatDirector = new PersonDirector(new PersonFatBuilder());
 $fatDirector->CreatePerson();
 ```
 
+一句话概括
+
+> 将一个复杂对象的构建与它的表示分离，隐藏其实现细节
+
 总结：
 
 > ***建造者模式***，将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
