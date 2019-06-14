@@ -46,4 +46,4 @@
 
 > 迭代器，提供一种方法顺序访问一个聚合对象中各个元素，而不需暴露该对象的内部表示。    
 
-上一章：[第二十八章 男人和女人 －－－ 访问者模式](https://github.com/flyingalex/design-patterns-by-php/blob/master/files/chapter28.md)
+上一章：[第二十八章 男人和女人 －－－ 访问者模式](https://github.com/zhaodongqiu/design-patterns-by-php/blob/master/files/chapter28.md)

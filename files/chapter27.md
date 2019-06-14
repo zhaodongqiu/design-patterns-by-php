@@ -72,6 +72,6 @@ foreach ($syntax as $value) {
 
 > 解释器模式不足的是要为文法中的每一条规则至少定义了一个类，因此包含许多规则的文法可能难以管理和维护。建议当文法非常复杂时，使用其他的技术如语法分析程序或编译器生成器来处理。
 
-上一章：[第二十六章 项目多也别傻做 －－－ 享元模式](https://github.com/flyingalex/design-patterns-by-php/blob/master/files/chapter26.md)
+上一章：[第二十六章 项目多也别傻做 －－－ 享元模式](https://github.com/zhaodongqiu/design-patterns-by-php/blob/master/files/chapter26.md)
 
-下一章：[第二十八章 男人和女人 －－－ 访问者模式](https://github.com/flyingalex/design-patterns-by-php/blob/master/files/chapter28.md)
+下一章：[第二十八章 男人和女人 －－－ 访问者模式](https://github.com/zhaodongqiu/design-patterns-by-php/blob/master/files/chapter28.md)
