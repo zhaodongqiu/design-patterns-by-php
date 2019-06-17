@@ -194,6 +194,9 @@ $id = DataBase::CreateDepartment();
 $id->insert($department);
 $id->getDepartment(1);
 ```
+一句话概括
+
+> 多个工厂，每个工厂能生产各种产品，使用时由子类决定使用哪个工厂
 
 > ***抽象工厂模式***，提供一个创建一系列相关或相互依赖对象的接口，而无需指定他们的具体类。
 
