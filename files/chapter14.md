@@ -1,79 +1,90 @@
 ### 第十四章 老板回来，我不知道 －－－ 观察者模式
 
 ```php
-<?php 
+<?php
 
-abstract class Subject
+/**
+ * 事件产生类
+ * Class EventGenerator
+ */
+abstract class EventGenerator
 {
-    private $observers = [];
+    private $ObServers = [];
 
-    public function attach(Observer $observer)
+    //增加观察者
+    public function add(ObServer $ObServer)
     {
-        array_push($this->observers, $observer);
+        $this->ObServers[] = $ObServer;
     }
 
-    public function detatch($observer)
-    {
-        foreach ($this->observers as $key => $value) {
-            if ($observer === $value) {
-                unset($this->observers[$key]);
-            }
-        }
-    }
-
+    //事件通知
     public function notify()
     {
-        foreach ($this->observers as $observer) {
-            $observer->update();
+        foreach ($this->ObServers as $ObServer) {
+            $ObServer->update();
         }
     }
+
 }
 
-abstract class Observer
+/**
+ * 观察者接口类
+ * Interface ObServer
+ */
+interface ObServer
 {
-    abstract function update();
+    public function update($event_info = null);
 }
 
-class ConcreteSubject extends Subject
+/**
+ * 观察者1
+ */
+class ObServer1 implements ObServer
 {
-    private $subjectState;
-    public function setState($state)
+    public function update($event_info = null)
     {
-        $this->subjectState = $state;
-    }
-
-    public function getState()
-    {
-        return $this->subjectState;
+        echo "观察者1 收到执行通知 执行完毕！\n";
     }
 }
 
-class ConcreteObserver extends Observer
+/**
+ * 观察者1
+ */
+class ObServer2 implements ObServer
 {
-    private $name;
-    private $subject;
-
-    function __construct(ConcreteSubject $subject, $name)
+    public function update($event_info = null)
     {
-        $this->subject = $subject;
-        $this->name = $name;
-    }
-
-    public function update()
-    {
-        echo "观察者 ".$this->name."的新状态是:".$this->subject->getState()."\n";
+        echo "观察者2 收到执行通知 执行完毕！\n";
     }
 }
 
-$s = new ConcreteSubject();
-$s->attach(new ConcreteObserver($s, "x"));
-$s->attach(new ConcreteObserver($s, "y"));
-$z = new ConcreteObserver($s, "z");
-$s->attach($z);
-$s->detatch($z);
-$s->setState('ABC');
-$s->notify();
+/**
+ * 事件
+ * Class Event
+ */
+class Event extends EventGenerator
+{
+    /**
+     * 触发事件
+     */
+    public function trigger()
+    {
+        //通知观察者
+        $this->notify();
+    }
+}
+
+//创建一个事件
+$event = new Event();
+//为事件增加旁观者
+$event->add(new ObServer1());
+$event->add(new ObServer2());
+//执行事件 通知旁观者
+$event->trigger();
 ```
+一句话概括
+
+> 当对象间存在一对多关系时，每个子类都有一个接收通知的方法，父类改变某些信息时，通过这个方法接收信息。
 
 总结：
 > ***观察者模式***，定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己。
